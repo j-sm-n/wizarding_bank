@@ -21,7 +21,7 @@ attr_reader :bank_name,
 
   def deposit(person, deposit_amount)
     if person.amount < deposit_amount
-      puts "#{name} doesn't have enough cash to perfom this deposit"
+      puts "#{name} doesn't have enough cash to perform this deposit"
     else
       @balance += deposit_amount
       @total_cash = person.amount - deposit_amount
@@ -37,6 +37,10 @@ attr_reader :bank_name,
       @total_cash += withdrawl_amount
       puts "#{name} has withdrawn #{withdrawl_amount} galleons. Balance: #{balance}"
     end
+  end
+
+  def transfer
+
   end
 end
 
