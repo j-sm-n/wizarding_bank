@@ -39,8 +39,15 @@ attr_reader :bank_name,
     end
   end
 
-  def transfer
-
+  def transfer(person, transfer_bank_name, transfer_amount)
+    if transfer_amount > @balance
+      puts "Insufficient funds."
+    elsif person.bank_accounts.include?(transfer_bank_name) && transfer_amount <= @balance
+      @balance -= transfer_amount
+      puts "#{name} has transferred #{transfer_amount} galleons from #{bank_name} to #{transfer_bank_name}."
+    else
+      puts "#{name} does not have an account with #{transfer_bank_name}."
+    end
   end
 end
 
@@ -53,3 +60,5 @@ puts chase.total_cash
 chase.withdrawl(person_1, 50)
 puts chase.total_cash
 chase.withdrawl(person_1, 5000)
+transfer_bank_name = "Wells Fargo"
+chase.transfer(person_1, transfer_bank_name, 100)
