@@ -16,6 +16,7 @@ attr_reader :bank_name,
 
   def open_account(person)
     @name = person.name
+    person.bank_accounts << bank_name
     puts "An account has been opened for #{name} with #{bank_name}."
   end
 
@@ -60,5 +61,9 @@ puts chase.total_cash
 chase.withdrawl(person_1, 50)
 puts chase.total_cash
 chase.withdrawl(person_1, 5000)
+
+wells_fargo = Bank.new("Wells Fargo")
+wells_fargo.open_account(person_1)
+puts person_1.bank_accounts.inspect
 transfer_bank_name = "Wells Fargo"
 chase.transfer(person_1, transfer_bank_name, 100)
